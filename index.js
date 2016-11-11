@@ -16,7 +16,6 @@ var context = {
     //middleware
     middleware: {},
     //root uri for all routes in schema
-    requestHandler: require(path.normalize(__dirname + "/lib/requestHandler.js")),
     rootUri: '',
     //routes declaration
     routes: {},
@@ -41,3 +40,4 @@ context.discovery = function (serviceInterface, config) {
 context.start = function (info) { require(path.normalize(__dirname + "/lib/init.js")).call(context, info) }
 
 module.exports = context;
+module.exports.app = require('./lib/app.js');
