@@ -6,7 +6,7 @@ var context = {
     dbs: {}, // NOTE must be set before controllers
     //environment variables
     env: {},
-    errors: require(path.normalize(__dirname + "/lib/errors.js")),
+    errors: {},
     helpers: require(path.normalize(__dirname + "/lib/helpers.js")),
     //environment mode, development, staging, production...
     mode: "",
