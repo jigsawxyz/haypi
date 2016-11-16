@@ -33,7 +33,7 @@
   "devDependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hippopotamus2/haypi.git"
+    "url": "git+https://github.com/jigsawxyz/haypi.git"
   },
   "keywords": [
     "framework",
@@ -41,7 +41,7 @@
     "express"
   ],
   "bugs": {
-    "url": "https://github.com/hippopotamus2/haypi/issues"
+    "url": "https://github.com/jigsawxyz/haypi/issues"
   },
-  "homepage": "https://github.com/hippopotamus2/haypi#readme"
+  "homepage": "https://github.com/jigsawxyz/haypi#readme"
 }
