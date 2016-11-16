@@ -13,14 +13,19 @@
     "async": "^2.0.1",
     "bluebird": "^3.4.1",
     "body-parser": "^1.15.2",
+    "chai": "^3.5.0",
     "debug": "^2.2.0",
     "ejs": "^2.4.2",
     "express": "^4.14.0",
     "json-schema-docs": "^0.1.1",
+    "json-schema-faker": "^0.3.7",
     "lodash": "^4.14.2",
+    "mocha": "^3.1.2",
     "morgan": "^1.7.0",
     "nconf": "^0.8.4",
-    "request": "^2.74.0"
+    "request": "^2.74.0",
+    "request-promise": "^4.1.1",
+    "superagent-bluebird-promise": "^4.1.0"
   },
   "directories": {
     "test": "test"
