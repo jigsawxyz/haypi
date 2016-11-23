@@ -1,43 +1,33 @@
 'use strict';
-var path = require("path");
-var _ = require('lodash')
-var context = {
+let path = require('path');
+let _ = require('lodash')
+let context = {
     controllers: {},
-    dbs: {}, // NOTE must be set before controllers
-    //environment variables
-    env: {},
+    db: {},
+    env: {}, // environment variables
     errors: {},
-    helpers: require(path.normalize(__dirname + "/lib/helpers.js")),
-    //environment mode, development, staging, production...
-    mode: "",
-    //globals setter and getter
-    globals: require(path.normalize(__dirname + "/lib/globals.js")),
-    logger: require(path.normalize(__dirname + "/lib/logger.js")),
-    //middleware
+    helpers: require('./lib/helpers'),
+    mode: '', // environment mode, development, staging, production...
+    globals: require('./lib/globals'), // globals setter and getter
+    logger: require('./lib/logger'),
     middleware: {},
-    //root uri for all routes in schema
-    rootUri: '',
-    //routes declaration
-    routes: {},
+    plugins: [],
+    rootUri: '', // root uri for all routes
     schemas: {},
-    //validators
-    validators: {},
-    //public
-    publicDirectory: "",
-    //view engine
-    viewEngine: null,
 }
+// event callbacks
+context.events = require('./lib/events').call(context);
 
-//event callbacks
-context.events = require(path.normalize(__dirname + "/lib/events.js")).call(context);
-
-//service discovery serviceInterface
+// service discovery serviceInterface
 context.discovery = function (serviceInterface, config) {
-    return require(path.normalize(__dirname + "/lib/discovery.js")).call(context, serviceInterface, config)
+    return require('./lib/discovery').call(context, serviceInterface, config)
 }
 
- //init function
-context.start = function (info) { require(path.normalize(__dirname + "/lib/init.js")).call(context, info) }
+// start server fn
+context.start = function (info) { require('./lib/init').call(context, info) }
 
 module.exports = context;
 module.exports.app = require('./lib/app.js');
+module.exports.buildApp = (params) => {
+    _.assign(context, params)
+}
