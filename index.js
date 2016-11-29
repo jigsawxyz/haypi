@@ -11,6 +11,7 @@ let context = {
     globals: require('./lib/globals'), // globals setter and getter
     logger: require('./lib/logger'),
     middleware: {},
+    //i dont know what this is
     plugins: [],
     rootUri: '', // root uri for all routes
     schemas: {},
@@ -28,6 +29,21 @@ context.start = function (info) { require('./lib/init').call(context, info) }
 
 module.exports = context;
 module.exports.app = require('./lib/app.js');
+
 module.exports.buildApp = (params) => {
+
     _.assign(context, params)
+
+    context.env = context.env();
+    var envConfig = context.env;
+    var nconf = require("nconf").argv().env({ separator: '__' }).defaults(_.get(envConfig, context.mode, envConfig));
+    context.env = nconf;
+
+    if (!context.name) {
+        throw new Error("Please specify a name for the app ex. `name:'My App'`");
+    }
+    if (!context.mode) {
+        throw new Error("No mode specified ex. `mode: development`");
+    }
+
 }
