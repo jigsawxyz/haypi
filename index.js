@@ -33,17 +33,15 @@ module.exports.app = require('./lib/app.js');
 module.exports.buildApp = (params) => {
 
     _.assign(context, params)
-
-    context.env = context.env();
-    var envConfig = context.env;
-    var nconf = require("nconf").argv().env({ separator: '__' }).defaults(_.get(envConfig, context.mode, envConfig));
-    context.env = nconf;
-
     if (!context.name) {
         throw new Error("Please specify a name for the app ex. `name:'My App'`");
     }
     if (!context.mode) {
         throw new Error("No mode specified ex. `mode: development`");
     }
+
+    var nconf = require("nconf").argv().env({ separator: '__' }).defaults(context.env()[context.mode]);
+    context.env = nconf;
+
 
 }
