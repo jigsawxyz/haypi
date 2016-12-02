@@ -42,6 +42,4 @@ module.exports.buildApp = (params) => {
 
     var nconf = require("nconf").argv().env({ separator: '__' }).defaults(context.env()[context.mode]);
     context.env = nconf;
-
-
 }
