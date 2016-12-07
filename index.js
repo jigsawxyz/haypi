@@ -31,7 +31,6 @@ module.exports = context;
 module.exports.app = require('./lib/app.js');
 
 module.exports.buildApp = (params) => {
-
     _.assign(context, params)
     if (!context.name) {
         throw new Error("Please specify a name for the app ex. `name:'My App'`");
