@@ -15,24 +15,13 @@ let context = {
     plugins: [],
     rootUri: '', // root uri for all routes
     schemas: {},
+    serviceConnections: function() { return {} }
 }
 // event callbacks
 context.events = require('./lib/events').call(context);
 
 // service discoveryInterface
-context.discovery = function (discoveryInterface, config) {
-    let actions = discoveryInterface(context, config);
-
-    context.events.on("up", function(serverInfo){
-        actions.announce(serverInfo)
-    })
-
-    context.events.on("shutdown", function(type){
-        actions.remove()
-    })
-
-    context.serviceRequest = require(__dirname + "/lib/serviceRequest.js").bind(actions) 
-}
+context.discovery = require('./lib/discovery').bind(context)
 
 // start server fn
 context.start = function (info) { require('./lib/init').call(context, info) }
