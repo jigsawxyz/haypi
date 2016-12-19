@@ -19,9 +19,19 @@ let context = {
 // event callbacks
 context.events = require('./lib/events').call(context);
 
-// service discovery serviceInterface
-context.discovery = function (serviceInterface, config) {
-    return require('./lib/discovery').call(context, serviceInterface, config)
+// service discoveryInterface
+context.discovery = function (discoveryInterface, config) {
+    let actions = discoveryInterface(context, config);
+
+    context.events.on("up", function(serverInfo){
+        actions.announce(serverInfo)
+    })
+
+    context.events.on("shutdown", function(type){
+        actions.remove()
+    })
+
+    context.serviceRequest = require(__dirname + "/lib/serviceRequest.js").bind(actions) 
 }
 
 // start server fn
