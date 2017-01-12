@@ -14,6 +14,7 @@ let context = {
     //i dont know what this is
     plugins: [],
     rootUri: '', // root uri for all routes
+    mockRootUri: '/mock',
     schemas: {},
     serviceConnections: function() { return {} }
 }
