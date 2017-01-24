@@ -6,7 +6,7 @@ let context = {
     db: {},
     env: {}, // environment variables
     errors: {},
-    helpers: require('./lib/helpers'),
+    helpers: {},
     mode: '', // environment mode, development, staging, production...
     globals: require('./lib/globals'), // globals setter and getter
     logger: require('./lib/logger'),
@@ -15,7 +15,8 @@ let context = {
     plugins: [],
     rootUri: '', // root uri for all routes
     schemas: {},
-    serviceConnections: function() { return {} }
+    serviceConnections: function() { return {} },
+    utils: require('./lib/utils'),
 }
 // event callbacks
 context.events = require('./lib/events').call(context);
