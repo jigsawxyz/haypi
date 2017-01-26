@@ -15,6 +15,7 @@ let context = {
     plugins: [],
     rootUri: '', // root uri for all routes
     mockRootUri: '/mock',
+    responses: require('./lib/responses'),
     schemas: {},
     serviceConnections: function() { return {} },
     utils: require('./lib/utils'),
