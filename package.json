@@ -1,6 +1,6 @@
 {
   "name": "haypi",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "Easy microservice web framework tools",
   "main": "index.js",
   "scripts": {
