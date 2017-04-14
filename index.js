@@ -39,7 +39,6 @@ module.exports.buildApp = (params) => {
     if (!context.mode) {
         throw new Error("No mode specified ex. `mode: development`");
     }
-
-    var nconf = require("nconf").argv().env({ separator: '__' }).defaults(context.env()[context.mode]);
+    var nconf = require("nconf").argv().env({ separator: '__' }).defaults(require(process.cwd() + "/lib/env/" + context.mode));
     context.env = nconf;
 }
