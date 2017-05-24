@@ -1,6 +1,8 @@
 'use strict';
 let path = require('path');
-let _ = require('lodash')
+let _ = require('lodash');
+const Promise = require('bluebird');
+
 let context = {
     controllers: {},
     db: {},
@@ -15,8 +17,10 @@ let context = {
     plugins: [],
     rootUri: '', // root uri for all routes
     mockRootUri: '/mock',
+    runTasks: function(){ return Promise.resolve(false) },
     schemas: {},
     serviceConnections: function() { return {} },
+    tasks: {},
     utils: require('./lib/utils'),
 }
 // event callbacks
